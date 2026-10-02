@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hanna Park — Computer Engineering portfolio focused on embedded firmware, RTOS/kernel work, RTL/digital hardware, Embedded Linux, and C/C++ systems.">
+  <title>Hanna Park — Engineering Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top">Hanna Park</a>
+      <nav aria-label="Primary navigation">
+        <a href="#experience">Experience</a>
+        <a href="#work">Selected Work</a>
+        <a href="#additional">Additional Work</a>
+        <a href="#education">Education</a>
+        <a href="mailto:h93park@uwaterloo.ca">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <p class="eyebrow">Computer Engineering · University of Waterloo</p>
+      <h1>Embedded systems, real-time software, and digital hardware.</h1>
+      <p class="lede">
+        I work close to hardware — embedded C/C++, RTOS/kernel concepts, SystemVerilog RTL,
+        Embedded Linux, hardware interfaces, debugging, and system validation.
+      </p>
+
+      <div class="focus-grid" aria-label="Technical focus">
+        <div>
+          <span>01</span>
+          <strong>Embedded Firmware</strong>
+          <p>MCUs, drivers, UART/SPI/I²C, timers, interrupts, motor and sensor interfaces.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>Real-Time Systems</strong>
+          <p>Task management, context switching, scheduling, kernel memory management.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>RTL / Digital Hardware</strong>
+          <p>SystemVerilog, fixed-point arithmetic, ALUs, pipelining, FPGA/ASIC-oriented design.</p>
+        </div>
+        <div>
+          <span>04</span>
+          <strong>Embedded Linux</strong>
+          <p>Yocto, U-Boot, device trees, systemd, networking, SSH, board provisioning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="experience">
+      <div class="section-heading">
+        <p>Experience</p>
+        <h2>Professional and technical work</h2>
+      </div>
+
+      <div class="experience-list">
+        <article class="experience-row">
+          <div class="experience-meta">
+            <strong>Qidni Labs</strong>
+            <span>Software Engineer Intern · May–Aug 2026</span>
+          </div>
+          <div>
+            <p class="company-context">
+              Clinical-stage medical-device company developing portable dialysis technology designed
+              to reduce dependence on conventional water and infrastructure.
+            </p>
+            <p>
+              Embedded firmware, motor/valve diagnostics, Embedded Linux bring-up, board provisioning,
+              hardware debugging, and sensor validation.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-row">
+          <div class="experience-meta">
+            <strong>DF/Net Research</strong>
+            <span>C/C++ Software Developer · Feb–Aug 2025</span>
+          </div>
+          <div>
+            <p class="company-context">
+              Healthcare technology company providing eClinical software and data-management tools
+              for clinical-trial workflows.
+            </p>
+            <p>
+              Production C++/Qt development, structured parsing and validation, reusable import workflows,
+              cross-platform debugging, and regression testing.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-row">
+          <div class="experience-meta">
+            <strong>UWASIC — TinyTracer</strong>
+            <span>ALU / RTL Engineer</span>
+          </div>
+          <div>
+            <p class="company-context">
+              Student ASIC project developing a hardware ray-tracing accelerator.
+            </p>
+            <p>
+              Designed and verified the SystemVerilog RTL for a 16-bit signed fixed-point ALU and
+              integrated it with the accelerator functional-unit interface.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="work">
+      <div class="section-heading">
+        <p>Selected Work</p>
+        <h2>Four case studies that best represent my background</h2>
+      </div>
+
+      <!-- 01 -->
+      <article class="case-study">
+        <div class="case-number">01</div>
+        <div class="case-main">
+          <div class="case-header">
+            <div>
+              <p class="kicker">Qidni Labs · Embedded Firmware / Hardware Integration</p>
+              <h3>Embedded control and diagnostic platform</h3>
+            </div>
+            <div class="tags">
+              <span>C/C++</span><span>ATSAMD51</span><span>UART</span><span>SPI</span><span>DRV8711</span>
+            </div>
+          </div>
+
+          <div class="case-layout">
+            <div class="case-copy">
+              <div class="case-block">
+                <h4>Context</h4>
+                <p>
+                  Motor and valve behavior needed to be configurable and observable without repeatedly
+                  modifying low-level firmware for each tuning or diagnostic experiment.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <h4>My contribution</h4>
+                <ul>
+                  <li>Exposed DRV8711 registers and tuning fields across four pump channels with validated read/write handling and decoded status faults.</li>
+                  <li>Redesigned the UART command/response path so firmware returned compact values and the C# host handled conversion and display formatting.</li>
+                  <li>Refactored dual DRV81004-Q1 valve control around per-driver PCB mappings and added SPI diagnostic decoding.</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <h4>Engineering finding</h4>
+                <p>
+                  During a related stall-detection investigation, datasheet review and oscilloscope work
+                  showed that the existing PCB did not route the DRV8711 BEMF signal to an ADC-capable
+                  MCU input. External BEMF-based detection therefore required a hardware revision rather
+                  than more firmware.
+                </p>
+              </div>
+            </div>
+
+            <div class="evidence-stack">
+              <figure>
+                <img src="assets/qidni_motor.jpg" alt="Motor-control board being debugged with an oscilloscope">
+                <figcaption>Motor-control bench debugging.</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/qidni_waveform.jpg" alt="Oscilloscope waveform during motor investigation">
+                <figcaption>Exploratory waveform measurement.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="simple-architecture" aria-label="Generalized embedded diagnostics architecture">
+            <div>Host diagnostics</div><span>UART</span><div>ATSAMD51 firmware</div><span>SPI</span><div>Motor / valve drivers</div>
+          </div>
+
+          <div class="case-footnote">
+            Additional Qidni work included air-bubble sensor integration/validation and a basic CAD + 3D-printed
+            pressure-sensor alignment fixture. Proprietary code, repositories, internal documents, and sensitive device details are omitted.
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="case-study">
+        <div class="case-number">02</div>
+        <div class="case-main">
+          <div class="case-header">
+            <div>
+              <p class="kicker">Qidni Labs · Embedded Linux / Platform</p>
+              <h3>i.MX8M Plus bring-up and provisioning</h3>
+            </div>
+            <div class="tags">
+              <span>Yocto</span><span>U-Boot</span><span>Device Tree</span><span>systemd</span><span>SSH</span><span>Python</span>
+            </div>
+          </div>
+
+          <div class="case-layout">
+            <div class="case-copy">
+              <div class="case-block">
+                <h4>Context</h4>
+                <p>
+                  A newly programmed SoM needed a repeatable path from bootloader configuration to working
+                  peripherals, network access, and automatically starting device applications.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <h4>My contribution</h4>
+                <ul>
+                  <li>Configured U-Boot environment settings, selected base device trees, compiled/deployed custom overlays, and installed target binaries/configuration.</li>
+                  <li>Created systemd services and validated the boot path through automatic backend/UI startup.</li>
+                  <li>Stabilized direct Ethernet with DHCP plus IPv4 link-local fallback and mDNS; configured certificate-based SSH and corrected time-related certificate failures.</li>
+                  <li>Built a Python Windows provisioning utility for hostname setup, connectivity checks, file deployment, overlays, services, and SSH workflows.</li>
+                </ul>
+              </div>
+            </div>
+
+            <figure class="architecture-figure">
+              <img src="assets/linux_arch.png" alt="Generalized Embedded Linux boot and provisioning architecture">
+              <figcaption>Generalized boot and deployment flow.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="case-study">
+        <div class="case-number">03</div>
+        <div class="case-main">
+          <div class="case-header">
+            <div>
+              <p class="kicker">ECE 350 · Real-Time Operating Systems</p>
+              <h3>Real-Time Executive / RTOS kernel</h3>
+            </div>
+            <div class="tags">
+              <span>C</span><span>ARM Assembly</span><span>STM32F4</span><span>Cortex-M4</span><span>RTOS</span>
+            </div>
+          </div>
+
+          <p class="team-note">Cumulative course project developed in a four-person team.</p>
+
+          <div class="case-layout">
+            <div class="case-copy">
+              <div class="case-block">
+                <h4>Project scope</h4>
+                <p>
+                  Built a small Real-Time Executive for an ARM Cortex-M4 platform. The project progressed
+                  from cooperative multitasking to kernel memory management and deadline-based preemptive scheduling.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <h4>Kernel mechanisms</h4>
+                <ul>
+                  <li>Task creation/termination, TCB management, task information, kernel startup, and yielding.</li>
+                  <li>Kernel operations behind SVC exceptions and task context switching through PendSV.</li>
+                  <li>First-Fit heap allocator with freelist metadata, ownership tracking, alignment, and immediate coalescing.</li>
+                  <li>SysTick-driven timing and Earliest Deadline First scheduling for ready/sleeping periodic tasks.</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <h4>Why it matters</h4>
+                <p>
+                  This project connected MCU execution state, interrupts/exceptions, dynamic memory,
+                  scheduling policy, and race-condition awareness inside one kernel-level codebase.
+                </p>
+              </div>
+            </div>
+
+            <div class="rtos-diagram" aria-label="Representative RTOS architecture">
+              <div class="diagram-label">Representative architecture</div>
+              <div class="rtos-node">Application Tasks</div>
+              <div class="down">↓ SVC</div>
+              <div class="two-col">
+                <div class="rtos-node">Kernel APIs / TCBs</div>
+                <div class="rtos-node">First-Fit Heap</div>
+              </div>
+              <div class="down">↓</div>
+              <div class="two-col">
+                <div class="rtos-node accent">EDF Scheduler</div>
+                <div class="rtos-node">Ready / Sleep State</div>
+              </div>
+              <div class="down">↓ PendSV / SysTick</div>
+              <div class="rtos-node">ARM Cortex-M4 Context</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="case-study">
+        <div class="case-number">04</div>
+        <div class="case-main">
+          <div class="case-header">
+            <div>
+              <p class="kicker">UWASIC · TinyTracer</p>
+              <h3>16-bit fixed-point ALU for a ray-tracing ASIC</h3>
+            </div>
+            <div class="tags">
+              <span>SystemVerilog</span><span>RTL</span><span>ASIC</span><span>Fixed-Point</span><span>Computer Architecture</span>
+            </div>
+          </div>
+
+          <div class="case-layout">
+            <div class="case-copy">
+              <div class="case-block">
+                <h4>My contribution</h4>
+                <ul>
+                  <li>Designed the microarchitecture and SystemVerilog RTL for a 16-bit signed fixed-point ALU supporting ADD, SUB, EQ, NE, LT, and GE.</li>
+                  <li>Implemented 1-cycle execution with 1 µop/cycle throughput and saturating arithmetic at signed 16-bit limits.</li>
+                  <li>Integrated the ALU with the accelerator functional-unit handshake interface (<code>fu_if</code>).</li>
+                  <li>Verified arithmetic, comparisons, overflow, and boundary conditions through RTL simulation.</li>
+                </ul>
+              </div>
+
+              <div class="case-block compact-secondary">
+                <h4>Related digital hardware work — ECE 327</h4>
+                <p>
+                  Selected paired SystemVerilog/FPGA labs included a fixed-point tanh accelerator using
+                  Q2.12 arithmetic, ready/valid flow control and pipelining, plus matrix-vector accelerator
+                  work with parallel compute lanes and pipelined dot-product units. The course targeted high-frequency
+                  implementation; no specific achieved clock rate is claimed here.
+                </p>
+              </div>
+            </div>
+
+            <div class="alu-diagram" aria-label="TinyTracer ALU diagram">
+              <div class="diagram-label">TinyTracer ALU</div>
+              <div class="alu-input-row">
+                <div>A[15:0]</div><div>B[15:0]</div><div>Opcode</div>
+              </div>
+              <div class="down">↓</div>
+              <div class="alu-core">
+                <strong>16-bit signed fixed-point ALU</strong>
+                <span>ADD · SUB · EQ · NE · LT · GE</span>
+                <span>Saturating arithmetic</span>
+              </div>
+              <div class="down">↓</div>
+              <div class="alu-core light">
+                <strong><code>fu_if</code></strong>
+                <span>1-cycle execution</span>
+                <span>1 µop / cycle throughput</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell" id="additional">
+      <div class="section-heading">
+        <p>Additional Work</p>
+        <h2>Supporting projects that add breadth without repeating the same story</h2>
+      </div>
+
+      <div class="additional-grid">
+        <article class="additional-card">
+          <figure>
+            <img src="assets/reservoir.jpg" alt="STM32 water reservoir prototype">
+            <figcaption>Prototype bring-up.</figcaption>
+          </figure>
+          <div>
+            <p class="kicker">Embedded Control · STM32</p>
+            <h3>Water Reservoir Embedded Control System</h3>
+            <p>
+              Multi-mode controller integrating PWM motor control, servo actuation, ultrasonic sensing,
+              interrupt-driven RPM measurement, UART configuration, timers, and safety shutdown behavior.
+            </p>
+          </div>
+        </article>
+
+        <article class="additional-card">
+          <figure class="contained">
+            <img src="assets/crawler_arch.png" alt="Multithreaded crawler architecture">
+          </figure>
+          <div>
+            <p class="kicker">Systems Programming · C</p>
+            <h3>Multi-threaded Web Crawler</h3>
+            <p>
+              pthreads-based work pipeline with a mutex/condition-variable frontier, visited-URL hash set,
+              libcurl fetching, libxml2/XPath parsing, PNG signature validation, and synchronized logging.
+            </p>
+          </div>
+        </article>
+
+        <article class="additional-card">
+          <figure class="contained">
+            <img src="assets/audio_arch.png" alt="Embedded audio and filesystem architecture">
+          </figure>
+          <div>
+            <p class="kicker">Embedded C · FATFS</p>
+            <h3>Audio Playback & Filesystem System</h3>
+            <p>
+              SD-card/FAT traversal, WAV parsing, UART control, real-time audio streaming,
+              variable playback modes, and interrupt-driven user controls.
+            </p>
+          </div>
+        </article>
+
+        <article class="additional-card">
+          <figure>
+            <img src="assets/control_lab.jpg" alt="Analog control systems laboratory setup">
+            <figcaption>ECE 380 laboratory setup.</figcaption>
+          </figure>
+          <div>
+            <p class="kicker">Controls · Experimental Hardware</p>
+            <h3>DC Motor System Identification & Feedback Control</h3>
+            <p>
+              Hands-on work with system identification, motor speed/position control, PID/root-locus concepts,
+              and lead/lag compensation using laboratory instrumentation and oscilloscope measurements.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="breadth-list">
+        <div>
+          <strong>ECE 318 — Communications</strong>
+          <span>Sampling, aliasing, quantization, PCM encode/decode, low-pass reconstruction.</span>
+        </div>
+        <div>
+          <strong>ECE 222 — Computer Architecture</strong>
+          <span>RISC-V assembly, memory-mapped GPIO, subroutines/stack behavior, C↔assembly interfacing.</span>
+        </div>
+        <div>
+          <strong>DF/Net — Production Software</strong>
+          <span>C++/Qt, eCRF import, structured parsing, validation, Linux/Windows/macOS debugging.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="education">
+      <div class="section-heading">
+        <p>Education</p>
+        <h2>University of Waterloo</h2>
+      </div>
+
+      <div class="education-layout">
+        <div>
+          <strong>BASc Computer Engineering</strong>
+          <span>Expected 2028</span>
+        </div>
+        <div>
+          <p class="kicker">Current coursework</p>
+          <p>Computer Architecture · Compilers · Computer Networks</p>
+
+          <p class="kicker spacing-top">Selected completed coursework</p>
+          <p>
+            Real-Time Operating Systems · Digital Hardware Systems · Embedded Microprocessor Systems ·
+            Systems Programming & Concurrency · Algorithms & Data Structures · Analog Control Systems ·
+            Communication Systems · Instrument & Prototyping Lab
+          </p>
+        </div>
+      </div>
+
+      <div class="tech-summary">
+        <div><strong>Languages</strong><span>C, C++, Python, C#, ARM/RISC-V Assembly, SystemVerilog</span></div>
+        <div><strong>Embedded</strong><span>ATSAMD51, STM32, UART, SPI, I²C, PWM, timers, interrupts, FATFS</span></div>
+        <div><strong>Linux / Systems</strong><span>Yocto, U-Boot, device trees, systemd, pthreads, mutexes, condition variables</span></div>
+        <div><strong>Hardware / Debug</strong><span>FPGA/RTL, oscilloscope, sensor/actuator bring-up, basic CAD/3D printing</span></div>
+      </div>
+    </section>
+
+    <section class="contact shell">
+      <h2>Contact</h2>
+      <a href="mailto:h93park@uwaterloo.ca">h93park@uwaterloo.ca</a>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>Hanna Park</span>
+    <span>Computer Engineering · University of Waterloo</span>
+  </footer>
+</body>
+</html>
