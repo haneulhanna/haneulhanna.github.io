@@ -101,14 +101,6 @@ nav a:hover{text-decoration:underline;text-underline-offset:4px}
 .section-head{
   margin-bottom:36px;
 }
-.section-kicker{
-  font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin:0 0 7px;
-}
 .section-head h2{
   margin:0;
   font-size:34px;
@@ -137,12 +129,6 @@ nav a:hover{text-decoration:underline;text-underline-offset:4px}
   font-size:18px;
   line-height:1.55;
   color:var(--text);
-}
-.profile-single .profile-secondary{
-  margin-top:14px;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.5;
 }
 
 /* Experience */
@@ -666,20 +652,16 @@ footer{
     <div class="profile-single">
       <h2>Profile</h2>
       <p>
-        I work close to hardware, across embedded firmware, real-time systems, RTL, and Embedded Linux.
-        My experience includes motor and sensor interfaces, hardware debugging, system bring-up,
-        validation, and low-level C/C++ systems work.
-      </p>
-      <p class="profile-secondary">
-        My strongest work sits at the boundary between software, digital hardware, and physical systems.
+        Computer Engineering student focused on embedded firmware, RTOS, RTL/ASIC, and Embedded Linux.
+        Experience includes motor and sensor interfaces, board bring-up, hardware debugging, validation,
+        and low-level C/C++ systems work.
       </p>
     </div>
   </section>
 
   <section class="section shell" id="experience">
     <div class="section-head">
-      <p class="section-kicker">Professional Experience</p>
-      <h2>Industry work</h2>
+      <h2>Professional Experience</h2>
     </div>
 
     <article class="company">
@@ -697,7 +679,6 @@ footer{
 
       <div class="subsection" style="margin-top:0;padding-top:0;border-top:0">
         <h4>Embedded Firmware & Hardware Debugging</h4>
-        <p class="subsection-meta">Three distinct pieces of work across motor control, valve control, and investigation.</p>
 
         <div class="mini-projects">
           <div class="mini-project">
@@ -749,7 +730,7 @@ footer{
               <span>configuration · status</span>
             </div>
           </div>
-          <p class="caption">Generalized engineering-tool → UART → ATSAMD51 → SPI → motor-driver architecture.</p>
+          <p class="caption">Motor-driver diagnostics architecture.</p>
         </div>
 
         <div class="three-col-copy">
@@ -794,8 +775,8 @@ footer{
         <p class="subsection-meta">Yocto · i.MX8M Plus · U-Boot · device trees · systemd · networking · provisioning</p>
 
         <p>
-          A newly programmed i.MX8M Plus-based SoM needed a repeatable path from bootloader configuration
-          to working peripherals, network access, secure remote access, and automatic application startup.
+          Configured and deployed an i.MX8M Plus-based SoM from bootloader setup through peripheral bring-up,
+          networking, secure remote access, and automatic application startup.
         </p>
 
         <div class="diagram-wrap">
@@ -816,7 +797,7 @@ footer{
             <div class="box compact"><strong>Remote Access</strong><span>SSH certificate authentication · RTC-to-system-time sync</span></div>
             <div class="box compact"><strong>Windows Provisioning Tool</strong><span>Python utility · connectivity checks · file/config deployment · service setup</span></div>
           </div>
-          <p class="caption">Generalized boot, deployment, networking, and provisioning flow.</p>
+          <p class="caption">Embedded Linux bring-up and provisioning flow.</p>
         </div>
 
         <div class="three-col-copy">
@@ -918,7 +899,7 @@ footer{
       </ul>
 
       <div class="diagram-wrap">
-        <p class="diagram-title">Generalized production data-flow</p>
+        <p class="diagram-title">Data flow</p>
         <div class="flow dfnet">
           <div class="box"><strong>Structured Input</strong><span>eCRF / clinical form data</span></div>
           <div class="arrow">→</div>
@@ -938,8 +919,7 @@ footer{
 
   <section class="section shell" id="teams">
     <div class="section-head">
-      <p class="section-kicker">Technical Teams & Research</p>
-      <h2>Collaborative engineering outside internships</h2>
+      <h2>Technical Teams & Research</h2>
     </div>
 
     <div class="team-grid">
@@ -971,8 +951,7 @@ footer{
 
   <section class="section shell" id="projects">
     <div class="section-head">
-      <p class="section-kicker">Selected Technical Projects</p>
-      <h2>Grouped by engineering domain</h2>
+      <h2>Selected Technical Projects</h2>
     </div>
 
     <section class="domain">
@@ -1021,7 +1000,7 @@ footer{
               </ul>
             </div>
             <div class="diagram-wrap">
-              <p class="diagram-title">Reconstructed 5-stage pipeline</p>
+              <p class="diagram-title">5-stage pipeline</p>
               <div class="flow pipeline">
                 <div class="box compact"><strong>IF</strong><span>instruction fetch</span></div>
                 <div class="arrow">→</div>
@@ -1135,8 +1114,7 @@ footer{
 
   <section class="section shell" id="coursework">
     <div class="section-head">
-      <p class="section-kicker">Selected Coursework / Labs</p>
-      <h2>Supporting technical breadth</h2>
+      <h2>Selected Coursework / Labs</h2>
     </div>
     <div class="course-list">
       <div class="course-row">
@@ -1156,8 +1134,7 @@ footer{
 
   <section class="section shell">
     <div class="section-head">
-      <p class="section-kicker">Additional Experience</p>
-      <h2>Teaching & independent responsibility</h2>
+      <h2>Additional Experience</h2>
     </div>
     <div class="tutor-grid">
       <div class="tutor-stat">
@@ -1180,8 +1157,7 @@ footer{
 
   <section class="section shell" id="skills">
     <div class="section-head">
-      <p class="section-kicker">Education & Skills</p>
-      <h2>Technical toolkit</h2>
+      <h2>Education & Skills</h2>
     </div>
 
     <div class="education-line">
@@ -1216,8 +1192,7 @@ footer{
 
 <footer class="shell">
   <div class="confidential">
-    Company work is intentionally generalized. Proprietary code, internal repositories, unpublished product details,
-    and sensitive schematics are omitted.
+    Qidni work is shown at a high level; proprietary code, internal repository details, and sensitive schematics are omitted.
   </div>
   <div>© Ha-Neul (Hanna) Park</div>
 </footer>
