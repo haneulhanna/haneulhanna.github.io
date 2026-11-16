@@ -1,491 +1,1239 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ha-Neul Park — Computer Engineering portfolio: embedded firmware, RTOS, RTL/ASIC, Embedded Linux, C/C++ systems, validation and hardware integration.">
-  <title>Ha-Neul Park — Engineering Portfolio</title>
-  <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ha-Neul (Hanna) Park — Computer Engineering portfolio focused on embedded firmware, RTOS, RTL/ASIC, Embedded Linux, and low-level systems.">
+<title>Ha-Neul (Hanna) Park — Engineering Portfolio</title>
+<style>
 :root{
   --bg:#fff;
-  --ink:#111;
-  --muted:#666;
-  --line:#1d1d1d;
-  --soft:#ececec;
-  --max:1120px;
+  --text:#111;
+  --muted:#5e5e5e;
+  --line:#d7d7d7;
+  --line-dark:#1f1f1f;
+  --panel:#f7f7f7;
+  --max:1160px;
   --sans:Arial,Helvetica,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.45}
-img{display:block;max-width:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  line-height:1.55;
+  font-size:16px;
+}
 a{color:inherit}
-.wrap{width:min(var(--max),calc(100% - 42px));margin:0 auto}
-.site-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid #ddd}
-.header-row{height:58px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none}
-nav{display:flex;gap:20px;flex-wrap:wrap}
-nav a{font-size:12px;color:#444;text-decoration:none}
-nav a:hover{text-decoration:underline;text-underline-offset:3px}
-.hero{padding:74px 0 56px}
-.hero h1{font-size:48px;letter-spacing:.02em;margin:0;text-align:center;font-weight:800}
-.subtitle{text-align:center;font-size:16px;margin:8px 0 5px;font-weight:600}
-.meta{text-align:center;color:var(--muted);font-size:12px;margin:0}
-.rule{height:1px;background:var(--line);margin:28px 0}
-.section-label{font-size:11px;font-weight:800;letter-spacing:.03em;margin:0 0 8px}
-.intro-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:58px;align-items:start}
-.intro{font-size:16px;margin:0;max-width:560px}
-.download{font-size:12px;margin-top:16px}
-.download a{text-underline-offset:3px}
-.focus-list{border-top:1px solid #aaa}
-.focus-list div{display:grid;grid-template-columns:180px 1fr;gap:20px;padding:10px 0;border-bottom:1px solid #ddd;font-size:12px}
-.focus-list strong{font-size:12px}
-.focus-list span{color:#444}
-.selected-index{margin-top:52px;border-top:1px solid var(--line)}
-.selected-index>.section-label{padding-top:14px}
-.selected-index a{display:grid;grid-template-columns:46px minmax(260px,1fr) 1.3fr;gap:18px;align-items:center;padding:11px 0;border-bottom:1px solid #ddd;text-decoration:none}
-.selected-index a:hover strong{text-decoration:underline;text-underline-offset:3px}
-.selected-index span{font-size:12px;color:#555}
-.selected-index strong{font-size:14px}
-.selected-index em{font-size:12px;color:var(--muted);font-style:normal}
-.project{padding:74px 0;border-top:1px solid #ddd}
-.project-head{display:grid;grid-template-columns:50px 1fr;gap:16px;align-items:start}
-.project-no{font-size:12px;color:#555;padding-top:5px}
-.project h2,.simple-head h2{font-size:30px;line-height:1.1;margin:0 0 7px;letter-spacing:-.025em}
-.project-head p{font-size:12px;color:var(--muted);margin:0}
-.copy-block{margin-bottom:22px}
-.copy-block h3{font-size:12px;margin:0 0 7px;font-weight:800}
-.copy-block p,.copy-block li{font-size:14px;color:#202020}
-.copy-block p{margin:0 0 8px}
-ul{margin:0;padding-left:19px}
-li{margin-bottom:6px}
-.small-meta{color:var(--muted)!important;font-size:11px!important}
-.diagram{margin:22px 0}
-.diagram img{width:100%;height:auto;object-fit:contain;background:#fff}
-.diagram.wide img{max-height:420px}
-figcaption{text-align:center;color:var(--muted);font-size:10px;font-style:italic;margin-top:6px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:46px}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-.text-cols{margin-top:28px}
-.photo-grid{display:grid;gap:70px;align-items:start;margin-top:26px}
-.photo-grid.two{grid-template-columns:1fr 1fr}
-.photo-grid figure{margin:0;text-align:center}
-.photo-grid img{width:100%;height:auto;object-fit:contain;max-height:520px}
-.split-feature{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:start;margin-top:30px}
-.split-feature figure{margin:0}
-.split-feature img{width:100%;height:auto;object-fit:contain;max-height:520px}
-.hardware-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:start}
-.mechanism-table{border-top:1px solid #bbb;border-bottom:1px solid #bbb;margin:18px 0}
-.mechanism-table div{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:7px 0;border-bottom:1px solid #ddd;font-size:12px}
-.mechanism-table div:last-child{border-bottom:0}
-.mechanism-table span{color:#555}
-.asic-figure{margin:22px 0 0}
-.asic-figure img{width:min(100%,520px);margin:0 auto;height:auto;object-fit:contain}
-.asic-figure figcaption{max-width:540px;margin:8px auto 0}
-.reservoir-row{grid-template-columns:.8fr 1.2fr}
-.lower-projects{margin-top:48px;gap:64px}
-.lower-projects figure{margin:18px 0 0}
-.lower-projects figure>img{max-height:420px;object-fit:contain;margin:0 auto}
-.experience-blocks{gap:70px}
-.additional-bg{border-top:1px solid #bbb;margin-top:34px}
-.additional-bg div{display:grid;grid-template-columns:120px 1fr;gap:22px;padding:10px 0;border-bottom:1px solid #ddd;font-size:12px}
-.additional-bg span{color:#444}
-.education-grid{align-items:start}
-.toolkit{border-top:1px solid #aaa}
-.toolkit div{display:grid;grid-template-columns:135px 1fr;gap:20px;padding:10px 0;border-bottom:1px solid #ddd;font-size:12px}
-.toolkit span{color:#444}
-.footer{display:flex;justify-content:space-between;gap:20px;padding:24px 0 34px;border-top:1px solid var(--line);font-size:11px;color:#555}
-.footer a{text-decoration:none}
-code{font-family:Consolas,monospace;font-size:.95em}
-@media(max-width:860px){
-  .intro-grid,.hardware-grid,.two-col,.three-col,.split-feature,.reservoir-row{grid-template-columns:1fr}
-  .selected-index a{grid-template-columns:38px 1fr}
-  .selected-index em{grid-column:2}
-  .focus-list div{grid-template-columns:150px 1fr}
-  .photo-grid.two{grid-template-columns:1fr 1fr;gap:24px}
+img{display:block;max-width:100%;height:auto}
+code{font-family:var(--mono);font-size:.94em}
+.shell{width:min(var(--max),calc(100% - 44px));margin:0 auto}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.brand{
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+nav a{
+  text-decoration:none;
+  color:#444;
+  font-size:13px;
+}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Hero */
+.hero{
+  padding:86px 0 70px;
+  text-align:center;
+}
+.hero h1{
+  margin:0;
+  font-size:clamp(44px,6vw,72px);
+  line-height:1;
+  letter-spacing:-.045em;
+  font-weight:850;
+}
+.positioning{
+  margin:22px 0 0;
+  font-size:19px;
+  font-weight:700;
+}
+.identity{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+.hero-links{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.hero-links a{
+  font-size:13px;
+  text-underline-offset:4px;
+}
+
+/* Generic sections */
+.section{
+  padding:72px 0;
+  border-top:1px solid var(--line-dark);
+}
+.section-head{
+  margin-bottom:36px;
+}
+.section-kicker{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 7px;
+}
+.section-head h2{
+  margin:0;
+  font-size:34px;
+  line-height:1.05;
+  letter-spacing:-.025em;
+}
+.section-intro{
+  color:var(--muted);
+  max-width:760px;
+  margin:10px 0 0;
+}
+
+/* Profile */
+.profile-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
+  align-items:start;
+}
+.profile-copy h2{
+  font-size:12px;
+  letter-spacing:.03em;
+  margin:0 0 10px;
+}
+.profile-copy p{
+  margin:0;
+  font-size:19px;
+  line-height:1.5;
+  max-width:650px;
+}
+.profile-links{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.profile-links a{font-size:13px;text-underline-offset:4px}
+.profile-note{
+  border-left:1px solid var(--line-dark);
+  padding-left:28px;
+  color:var(--muted);
+  font-size:14px;
+}
+.profile-note strong{color:var(--text)}
+
+/* Experience */
+.company{
+  padding:0 0 64px;
+}
+.company + .company{
+  padding-top:64px;
+  border-top:1px solid var(--line);
+}
+.company-header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:start;
+  margin-bottom:28px;
+}
+.company-header h3{
+  margin:0;
+  font-size:30px;
+  letter-spacing:-.025em;
+}
+.company-meta{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.company-context{
+  max-width:760px;
+  margin:12px 0 0;
+  color:#333;
+}
+.company-date{
+  font-size:12px;
+  color:var(--muted);
+  white-space:nowrap;
+  margin-top:5px;
+}
+
+/* Qidni mini projects */
+.mini-projects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:30px 0 34px;
+}
+.mini-project{
+  border-top:2px solid var(--text);
+  padding-top:14px;
+}
+.mini-num{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--muted);
+}
+.mini-project h4{
+  margin:7px 0 9px;
+  font-size:18px;
+  line-height:1.2;
+}
+.mini-project p{
+  margin:0;
+  font-size:14px;
+  color:#333;
+}
+.bullets{
+  margin:10px 0 0;
+  padding-left:20px;
+}
+.bullets li{margin:6px 0}
+
+/* Diagrams */
+.diagram-wrap{
+  margin:30px 0;
+  padding:28px;
+  background:var(--panel);
+  border:1px solid var(--line);
+}
+.diagram-title{
+  font-size:14px;
+  font-weight:700;
+  margin:0 0 20px;
+}
+.flow{
+  display:grid;
+  align-items:center;
+  gap:10px;
+}
+.flow.motor{
+  grid-template-columns:1.15fr auto 1fr auto 1fr auto 1fr;
+}
+.flow.linux-top{
+  grid-template-columns:repeat(9,minmax(0,1fr));
+}
+.flow.linux-bottom{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:22px;
+}
+.flow.dfnet{
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+}
+.flow.audio{
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+}
+.flow.pipeline{
+  grid-template-columns:repeat(9,minmax(0,1fr));
+}
+.box{
+  border:1px solid #2b2b2b;
+  border-radius:10px;
+  background:#fff;
+  min-height:122px;
+  padding:16px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.box.compact{min-height:92px}
+.box strong{
+  font-size:16px;
+  line-height:1.12;
+}
+.box span{
+  color:#666;
+  font-size:12px;
+  line-height:1.18;
+  margin-top:7px;
+}
+.arrow{
+  text-align:center;
+  color:#555;
+  font-size:22px;
+  font-weight:700;
+}
+.protocol{
+  display:block;
+  font-family:var(--mono);
+  font-size:10px;
+  color:#333;
+  margin-bottom:4px;
+}
+.linux-top .arrow{grid-column:span 1}
+.linux-top .box{grid-column:span 1}
+.dfnet-testing{
+  margin:20px auto 0;
+  width:min(680px,100%);
+  min-height:100px;
+  border:1px solid #bdbdbd;
+  border-radius:10px;
+  background:#fff;
+  padding:20px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.dfnet-testing strong{font-size:16px}
+.dfnet-testing span{
+  margin-top:8px;
+  color:#666;
+  font-size:12px;
+}
+.caption{
+  margin:12px 0 0;
+  color:#666;
+  font-style:italic;
+  font-size:11px;
+  text-align:center;
+}
+
+/* Image evidence */
+.evidence-two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  margin-top:30px;
+}
+.evidence-three{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:22px;
+  margin-top:26px;
+}
+figure{margin:0}
+figure img{
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
+}
+figcaption{
+  color:#666;
+  font-size:11px;
+  font-style:italic;
+  margin-top:7px;
+}
+
+/* Qidni subsections */
+.subsection{
+  padding-top:46px;
+  margin-top:46px;
+  border-top:1px solid var(--line);
+}
+.subsection h4{
+  margin:0;
+  font-size:23px;
+  letter-spacing:-.015em;
+}
+.subsection-meta{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.three-col-copy{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:26px;
+}
+.three-col-copy h5{
+  margin:0 0 8px;
+  font-size:13px;
+}
+.three-col-copy p,.three-col-copy li{
+  font-size:14px;
+  color:#333;
+}
+.three-col-copy ul{margin:0;padding-left:18px}
+
+/* Technical teams */
+.team-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:48px;
+  align-items:start;
+}
+.team-copy h3{
+  margin:0;
+  font-size:27px;
+}
+.team-copy .role{
+  margin:5px 0 18px;
+  color:var(--muted);
+  font-size:13px;
+}
+.team-copy ul{
+  margin:0;
+  padding-left:20px;
+}
+.team-copy li{margin:8px 0}
+.microarch{
+  width:min(440px,100%);
+  margin:0 auto;
+}
+.microarch img{
+  border:1px solid var(--line);
+  background:#fff;
+}
+.watai{
+  margin-top:52px;
+  padding-top:40px;
+  border-top:1px solid var(--line);
+}
+.watai h3{
+  margin:0 0 4px;
+  font-size:22px;
+}
+.watai p{
+  margin:8px 0 0;
+  max-width:820px;
+  color:#333;
+}
+
+/* Projects grouped by domain */
+.domain{
+  padding:44px 0;
+  border-top:1px solid var(--line);
+}
+.domain:first-of-type{
+  border-top:0;
+  padding-top:0;
+}
+.domain-title{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  gap:28px;
+  align-items:start;
+}
+.domain-title h3{
+  margin:0;
+  font-size:21px;
+}
+.domain-content{min-width:0}
+.project-block + .project-block{
+  margin-top:36px;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+}
+.project-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:baseline;
+}
+.project-head h4{
+  margin:0;
+  font-size:21px;
+}
+.project-date{
+  font-size:11px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.project-tech{
+  color:var(--muted);
+  font-size:12px;
+  margin:4px 0 14px;
+}
+.project-copy{
+  max-width:780px;
+}
+.project-copy p{
+  margin:0 0 10px;
+}
+.project-copy ul{
+  margin:0;
+  padding-left:20px;
+}
+.project-copy li{margin:7px 0}
+.kernel-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  margin-top:18px;
+}
+.kernel-grid div{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+}
+.kernel-grid div:nth-child(odd){padding-right:18px}
+.kernel-grid div:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+.kernel-grid strong{font-size:12px}
+.kernel-grid span{font-size:12px;color:var(--muted)}
+.project-image-row{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:30px;
+  align-items:start;
+  margin-top:22px;
+}
+.project-image-row img{width:100%;height:auto;border:1px solid var(--line)}
+
+/* Coursework */
+.course-list{border-top:1px solid var(--line)}
+.course-row{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:26px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+}
+.course-row strong{font-size:13px}
+.course-row span{color:#444;font-size:14px}
+
+/* Tutoring */
+.tutor-grid{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:44px;
+}
+.tutor-stat{
+  border-top:2px solid var(--text);
+  padding-top:14px;
+}
+.tutor-stat strong{
+  display:block;
+  font-size:30px;
+  line-height:1;
+}
+.tutor-stat span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:6px;
+}
+.tutor-copy h3{margin:0;font-size:23px}
+.tutor-copy .role{color:var(--muted);font-size:13px;margin:5px 0 14px}
+.tutor-copy ul{margin:0;padding-left:20px}
+.tutor-copy li{margin:7px 0}
+
+/* Education + skills */
+.education-line{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:baseline;
+  padding-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.education-line strong{font-size:20px}
+.education-line span{color:var(--muted);font-size:13px}
+.coursework{
+  margin:14px 0 34px;
+  color:#444;
+  font-size:14px;
+}
+.skills{
+  border-top:1px solid var(--line-dark);
+}
+.skill-row{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:18px;
+  padding:8px 0;
+}
+.skill-row strong{font-size:14px}
+.skill-row span{font-size:14px}
+
+/* Footer */
+footer{
+  padding:30px 0 44px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:11px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+.confidential{
+  max-width:700px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  nav{display:none}
+  .profile-grid,.team-grid{grid-template-columns:1fr;gap:30px}
+  .profile-note{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
+  .company-header{grid-template-columns:1fr}
+  .company-date{white-space:normal}
+  .mini-projects{grid-template-columns:1fr}
+  .three-col-copy{grid-template-columns:1fr}
+  .domain-title{grid-template-columns:1fr;gap:16px}
+  .tutor-grid{grid-template-columns:1fr}
+  .flow.motor,.flow.dfnet,.flow.audio{
+    grid-template-columns:1fr;
+  }
+  .flow.motor .arrow,.flow.dfnet .arrow,.flow.audio .arrow{
+    transform:rotate(90deg);
+  }
+  .flow.linux-top{grid-template-columns:1fr}
+  .flow.linux-top .arrow{transform:rotate(90deg)}
+  .flow.linux-bottom{grid-template-columns:1fr}
+  .flow.pipeline{grid-template-columns:1fr}
+  .flow.pipeline .arrow{transform:rotate(90deg)}
+  .evidence-two,.evidence-three{grid-template-columns:1fr}
+  .project-image-row{grid-template-columns:1fr}
 }
 @media(max-width:620px){
-  .wrap{width:min(var(--max),calc(100% - 24px))}
-  .header-row{height:auto;padding:14px 0;align-items:flex-start}
-  nav{gap:10px;justify-content:flex-end}
-  nav a{font-size:11px}
-  .hero{padding:48px 0 38px}
-  .hero h1{font-size:38px}
-  .subtitle{font-size:14px}
-  .intro{font-size:15px}
-  .focus-list div{grid-template-columns:1fr;gap:3px}
-  .selected-index{margin-top:38px}
-  .project{padding:52px 0}
-  .project-head{grid-template-columns:34px 1fr}
-  .project h2,.simple-head h2{font-size:25px}
-  .photo-grid.two{grid-template-columns:1fr}
-  .mechanism-table div{grid-template-columns:1fr;gap:2px}
-  .additional-bg div,.toolkit div{grid-template-columns:1fr;gap:3px}
-  .footer{flex-direction:column;gap:4px}
+  .shell{width:min(var(--max),calc(100% - 24px))}
+  .header-inner{min-height:56px}
+  .hero{padding:58px 0 48px}
+  .hero h1{font-size:43px}
+  .positioning{font-size:16px}
+  .profile-copy p{font-size:17px}
+  .section{padding:56px 0}
+  .section-head h2{font-size:29px}
+  .company-header h3{font-size:26px}
+  .kernel-grid{grid-template-columns:1fr}
+  .kernel-grid div:nth-child(odd),
+  .kernel-grid div:nth-child(even){
+    padding:9px 0;border-left:0
+  }
+  .course-row,.skill-row,.education-line{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+  footer{flex-direction:column}
 }
-@media print{
-  .site-header{display:none}
-  .project{break-inside:avoid}
-  a{text-decoration:none}
-}
-
 </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="#top">HA-NEUL PARK</a>
-      <nav aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#experience">Additional Experience</a>
-        <a href="#education">Education</a>
-        <a href="Hanna_Park_Engineering_Portfolio.pdf">PDF</a>
-        <a href="mailto:h93park@uwaterloo.ca">Email</a>
-      </nav>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="#top">HANNA PARK</a>
+    <nav aria-label="Primary">
+      <a href="#experience">Experience</a>
+      <a href="#teams">Teams</a>
+      <a href="#projects">Projects</a>
+      <a href="#coursework">Coursework</a>
+      <a href="#skills">Skills</a>
+      <a href="Ha-Neul_Park_Resume.pdf">Resume</a>
+      <a href="Ha-Neul_Park_Engineering_Portfolio.pdf">PDF</a>
+      <a href="https://www.linkedin.com/in/haneulhanna-park">LinkedIn</a>
+      <a href="https://github.com/haneulhanna">GitHub</a>
+      <a href="mailto:h93park@uwaterloo.ca">Email</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero shell">
+    <h1>HA-NEUL (HANNA) PARK</h1>
+    <p class="positioning">Embedded Firmware · RTOS · RTL/ASIC · Embedded Linux</p>
+    <p class="identity">University of Waterloo · BASc Computer Engineering, Expected 2028</p>
+    <div class="hero-links">
+      <a href="Ha-Neul_Park_Resume.pdf">Resume</a>
+      <a href="Ha-Neul_Park_Engineering_Portfolio.pdf">Portfolio PDF</a>
+      <a href="https://www.linkedin.com/in/haneulhanna-park">LinkedIn</a>
+      <a href="https://github.com/haneulhanna">GitHub</a>
+      <a href="mailto:h93park@uwaterloo.ca">h93park@uwaterloo.ca</a>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero wrap">
-      <h1>HA-NEUL PARK</h1>
-      <p class="subtitle">Embedded Firmware · RTOS · RTL/ASIC · Embedded Linux</p>
-      <p class="meta">University of Waterloo · BASc Computer Engineering, Expected 2028 · <a href="mailto:h93park@uwaterloo.ca">h93park@uwaterloo.ca</a></p>
+  <section class="section shell">
+    <div class="profile-grid">
+      <div class="profile-copy">
+        <h2>PROFILE</h2>
+        <p>
+          I work close to hardware, across embedded firmware, real-time systems, RTL, and Embedded Linux.
+          My experience includes motor and sensor interfaces, hardware debugging, system bring-up,
+          validation, and low-level C/C++ systems work.
+        </p>
+      </div>
+      <div class="profile-note">
+        <strong>What ties the work together:</strong><br>
+        understanding the boundary between software, digital hardware, and physical systems—and debugging
+        far enough across that boundary to find the real constraint.
+      </div>
+    </div>
+  </section>
 
-      <div class="rule"></div>
+  <section class="section shell" id="experience">
+    <div class="section-head">
+      <p class="section-kicker">Professional Experience</p>
+      <h2>Industry work</h2>
+    </div>
 
-      <div class="intro-grid">
+    <article class="company">
+      <div class="company-header">
         <div>
-          <p class="section-label">PROFILE</p>
-          <p class="intro">I work close to hardware: embedded C/C++, real-time systems, SystemVerilog RTL, Embedded Linux, motor and sensor interfaces, hardware debugging, and validation. My strongest work spans the boundary between software, digital hardware, and physical systems.</p>
-          <p class="download"><a href="Hanna_Park_Engineering_Portfolio.pdf">Download portfolio PDF ↗</a></p>
+          <h3>Qidni Labs</h3>
+          <p class="company-meta">Software Engineering Intern · Embedded firmware / hardware integration</p>
+          <p class="company-context">
+            Qidni Labs develops medical-device systems that combine fluid handling, embedded electronics,
+            sensors, and control software.
+          </p>
         </div>
-        <div class="focus-list" aria-label="Technical focus">
-          <div><strong>Embedded firmware</strong><span>ATSAMD51, STM32, UART/SPI/I²C, drivers, sensors, motor control</span></div>
-          <div><strong>Real-time systems</strong><span>Cortex-M4, SVC/PendSV, task state, heap management, EDF scheduling</span></div>
-          <div><strong>RTL / digital hardware</strong><span>SystemVerilog, fixed-point ALU, FPGA/ASIC design, pipelining</span></div>
-          <div><strong>Embedded Linux</strong><span>Yocto, U-Boot, device trees, systemd, networking, SSH, provisioning</span></div>
-        </div>
+        <div class="company-date">May–Aug 2026 · Kitchener, ON</div>
       </div>
 
-      <div class="selected-index">
-        <p class="section-label">SELECTED WORK</p>
-        <a href="#q-control"><span>01</span><strong>Qidni Labs — Embedded Control & Diagnostics</strong><em>firmware, motor/valve drivers, UART/SPI, hardware debugging</em></a>
-        <a href="#q-linux"><span>02</span><strong>Qidni Labs — Embedded Linux Platform</strong><em>Yocto, U-Boot, device trees, networking, provisioning</em></a>
-        <a href="#q-validation"><span>03</span><strong>Qidni Labs — Sensor Validation & Physical Integration</strong><em>controlled testing, root cause, rapid prototyping</em></a>
-        <a href="#rt-hw"><span>04</span><strong>Real-Time & Digital Hardware</strong><em>ECE 350 RTOS, UWASIC TinyTracer, ECE 327 FPGA</em></a>
-        <a href="#systems"><span>05</span><strong>Production Software & C/C++ Systems</strong><em>DF/Net C++/Qt, multithreaded systems programming</em></a>
-        <a href="#embedded"><span>06</span><strong>Embedded Control & Experimental Engineering</strong><em>STM32 control, FATFS, controls and instrumentation</em></a>
-        <a href="#education"><span>07</span><strong>Education & Additional Experience</strong><em>WAT.ai, private tutoring, technical toolkit</em></a>
-      </div>
-    </section>
+      <div class="subsection" style="margin-top:0;padding-top:0;border-top:0">
+        <h4>Embedded Firmware & Hardware Debugging</h4>
+        <p class="subsection-meta">Three distinct pieces of work across motor control, valve control, and investigation.</p>
 
-    <div id="work"></div>
-
-    <section class="project wrap" id="q-control">
-      <header class="project-head">
-        <span class="project-no">01</span>
-        <div>
-          <h2>Qidni Labs — Embedded Control & Diagnostics</h2>
-          <p>Software Engineer Intern · May–Aug 2026 · Embedded firmware / hardware integration</p>
-        </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="copy-block">
-        <h3>CONTEXT</h3>
-        <p>Qidni Labs develops medical-device systems that combine fluid handling, embedded electronics, sensors, and control software. My firmware work connected an ATSAMD51 device, a C# host diagnostics application, and SPI motor/valve drivers.</p>
-      </div>
-
-      <figure class="diagram wide">
-        <img src="assets/motor_arch.png" alt="Generalized host diagnostics to ATSAMD51 to motor-driver architecture">
-        <figcaption>Generalized host → UART → ATSAMD51 → SPI → motor-driver architecture.</figcaption>
-      </figure>
-
-      <div class="two-col text-cols">
-        <div class="copy-block">
-          <h3>MY CONTRIBUTION</h3>
-          <ul>
-            <li>Extended ATSAMD51 firmware and host diagnostics to expose DRV8711 registers and tuning fields across four pump channels, with validated read/write handling and decoded status faults.</li>
-            <li>Redesigned the UART command/response path so firmware returned compact raw values while the C# host handled conversion and display formatting.</li>
-            <li>Refactored dual DRV81004-Q1 valve control around per-driver PCB mappings and added structured SPI diagnostic decoding for driver fault states.</li>
-          </ul>
-        </div>
-        <div class="copy-block">
-          <h3>ENGINEERING FINDING</h3>
-          <p>During a related stall-detection investigation, datasheet review and oscilloscope work showed that the existing PCB did not route the DRV8711 BEMF signal to an ADC-capable MCU input. External BEMF-based detection therefore required a hardware change rather than additional firmware alone.</p>
-        </div>
-      </div>
-
-      <div class="photo-grid two">
-        <figure><img src="assets/qidni_bench.jpg" alt="Motor-control and diagnostics bench"><figcaption>Motor-control / diagnostics bench work.</figcaption></figure>
-        <figure><img src="assets/qidni_scope.jpg" alt="Oscilloscope measurement during motor stall investigation"><figcaption>Oscilloscope measurement during stall investigation.</figcaption></figure>
-      </div>
-    </section>
-
-    <section class="project wrap" id="q-linux">
-      <header class="project-head">
-        <span class="project-no">02</span>
-        <div>
-          <h2>Qidni Labs — Embedded Linux Platform</h2>
-          <p>Yocto · i.MX8M Plus · U-Boot · device trees · systemd · networking · provisioning</p>
-        </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="copy-block">
-        <h3>CONTEXT</h3>
-        <p>A newly programmed i.MX8M Plus-based SoM needed a repeatable path from bootloader configuration to working peripherals, network access, secure remote access, and automatic application startup.</p>
-      </div>
-
-      <figure class="diagram wide"><img src="assets/linux_arch.png" alt="Generalized Embedded Linux boot and provisioning flow"><figcaption>Generalized boot, deployment, networking, and provisioning flow.</figcaption></figure>
-
-      <div class="three-col text-cols">
-        <div class="copy-block">
-          <h3>BOARD BRING-UP</h3>
-          <ul>
-            <li>Configured U-Boot settings, base device trees, custom overlays, target binaries, and configuration.</li>
-            <li>Created systemd services and validated automatic application startup.</li>
-            <li>Worked with UART, SPI, I²C, HDMI, and other board-level interfaces.</li>
-          </ul>
-        </div>
-        <div class="copy-block">
-          <h3>NETWORKING & REMOTE ACCESS</h3>
-          <ul>
-            <li>Stabilized direct Ethernet using DHCP with IPv4 link-local fallback and mDNS.</li>
-            <li>Configured certificate-authority SSH authentication and fixed time-related certificate failures with RTC synchronization.</li>
-          </ul>
-        </div>
-        <div class="copy-block">
-          <h3>PROVISIONING AUTOMATION</h3>
-          <p>Built a Python Windows utility to automate connectivity checks, hostname/configuration setup, file deployment, overlays, scripts, services, and password/certificate SSH workflows for newly programmed boards.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="project wrap" id="q-validation">
-      <header class="project-head">
-        <span class="project-no">03</span>
-        <div>
-          <h2>Qidni Labs — Sensor Validation & Physical Integration</h2>
-          <p>Firmware integration · controlled testing · root-cause reasoning · rapid prototyping</p>
-        </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="copy-block">
-        <h3>AIR-BUBBLE DETECTOR INTEGRATION & VALIDATION</h3>
-        <ul>
-          <li>Ported existing sensor logic to ATSAMD51 platform GPIO APIs and integrated the module into the firmware build.</li>
-          <li>Developed repeatable validation tests using controlled tubing, injected bubbles, multiple flow conditions, video-based response-time analysis, and structured test workbooks.</li>
-          <li>Used raw observations, video timing, and controlled conditions to distinguish sensor response from physical bubble travel and identify cases requiring re-verification.</li>
-        </ul>
-      </div>
-
-      <div class="photo-grid two">
-        <figure><img src="assets/abd_setup.jpg" alt="Controlled air-bubble detector test setup"><figcaption>Controlled air-bubble detector test setup.</figcaption></figure>
-        <figure><img src="assets/abd_timing.jpg" alt="Video timing setup for air-bubble detector testing"><figcaption>Video/timing setup used during response analysis.</figcaption></figure>
-      </div>
-
-      <div class="split-feature">
-        <div>
-          <div class="copy-block">
-            <h3>PRESSURE-SENSOR FIXTURE</h3>
-            <p>Designed a simple 3D-printed alignment jig using basic CAD to hold a custom membrane consistently against a pressure sensor during integration work.</p>
+        <div class="mini-projects">
+          <div class="mini-project">
+            <span class="mini-num">01</span>
+            <h4>DRV8711 Motor-Driver Diagnostics</h4>
+            <p>
+              Extended ATSAMD51 firmware and an internal C# engineering diagnostics tool to inspect and
+              configure DRV8711 registers and tuning parameters across four pump channels.
+            </p>
           </div>
-          <div class="copy-block">
-            <h3>ADDITIONAL VALIDATION / INTEGRATION</h3>
+          <div class="mini-project">
+            <span class="mini-num">02</span>
+            <h4>DRV81004-Q1 Valve-Control Firmware</h4>
+            <p>
+              Refactored firmware for two valve drivers with PCB-specific mappings and added structured
+              SPI diagnostics for driver fault states.
+            </p>
+          </div>
+          <div class="mini-project">
+            <span class="mini-num">03</span>
+            <h4>Motor Stall-Detection Investigation</h4>
+            <p>
+              Compared internal vs. external stall-detection approaches using datasheets, board constraints,
+              and oscilloscope measurements.
+            </p>
+          </div>
+        </div>
+
+        <div class="diagram-wrap">
+          <p class="diagram-title">Motor-driver engineering diagnostics path</p>
+          <div class="flow motor">
+            <div class="box">
+              <strong>Engineering Diagnostics Tool</strong>
+              <span>C# · internal debugging / tuning</span>
+            </div>
+            <div class="arrow"><span class="protocol">UART</span>→</div>
+            <div class="box">
+              <strong>ATSAMD51 Firmware</strong>
+              <span>command processing · validation</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="box">
+              <strong>SPI Motor Interface</strong>
+              <span>register / field access</span>
+            </div>
+            <div class="arrow"><span class="protocol">SPI</span>→</div>
+            <div class="box">
+              <strong>DRV8711 ×4</strong>
+              <span>configuration · status</span>
+            </div>
+          </div>
+          <p class="caption">Generalized engineering-tool → UART → ATSAMD51 → SPI → motor-driver architecture.</p>
+        </div>
+
+        <div class="three-col-copy">
+          <div>
+            <h5>Motor-driver diagnostics</h5>
             <ul>
-              <li>Developed formal verification procedures for net fluid removal and related fault behavior with defined setup, operating conditions, expected measurements, and acceptance checks.</li>
-              <li>Investigated fluid-channel leakage by comparing sealing, fit, flow restriction, mechanical strength, and manufacturing tradeoffs across multiple physical approaches.</li>
+              <li>Validated register read/write paths and decoded STATUS faults.</li>
+              <li>Supported raw↔human-readable tuning values and limits.</li>
+              <li>Redesigned UART responses so the MCU returned compact values while the host handled conversion/display.</li>
             </ul>
           </div>
-        </div>
-        <figure><img src="assets/pressure_fixture.jpg" alt="3D-printed membrane alignment fixture"><figcaption>3D-printed membrane alignment fixture.</figcaption></figure>
-      </div>
-    </section>
-
-    <section class="project wrap" id="rt-hw">
-      <header class="project-head">
-        <span class="project-no">04</span>
-        <div>
-          <h2>Real-Time & Digital Hardware</h2>
-          <p>ECE 350 RTOS kernel · UWASIC TinyTracer · ECE 327 FPGA</p>
-        </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="hardware-grid">
-        <article>
-          <div class="copy-block">
-            <h3>ECE 350 — REAL-TIME EXECUTIVE / RTOS KERNEL</h3>
-            <p class="small-meta">ARM Cortex-M4 · C / ARM assembly · STM32F4 · four-person course project</p>
-            <p>The cumulative Real-Time Executive progressed from task creation and cooperative multitasking to kernel memory management and deadline-based preemptive scheduling. Because this was a team project, the portfolio describes the team-developed kernel without assigning unverified ownership of every subsystem.</p>
-          </div>
-          <div class="mechanism-table" role="table" aria-label="RTOS mechanisms">
-            <div><strong>Application tasks</strong><span>Task entry points / stacks</span></div>
-            <div><strong>SVC-protected kernel APIs</strong><span>TCBs / task state</span></div>
-            <div><strong>First-Fit heap allocator</strong><span>Metadata / ownership / coalescing</span></div>
-            <div><strong>EDF scheduler</strong><span>Ready / sleeping tasks</span></div>
-            <div><strong>PendSV + SysTick</strong><span>Context switching / timing</span></div>
-          </div>
-          <ul>
-            <li>Task creation/termination, TCB management, kernel startup/yielding, and task information APIs.</li>
-            <li>Kernel operations behind SVC exceptions; context switching through PendSV.</li>
-            <li>First-Fit heap allocator with freelist management, task ownership, alignment, and immediate coalescing.</li>
-            <li>SysTick-driven preemption and Earliest Deadline First scheduling.</li>
-          </ul>
-        </article>
-
-        <article class="asic-block">
-          <div class="copy-block">
-            <h3>UWASIC — TINYTRACER RAY-TRACING ASIC</h3>
-            <p class="small-meta">ALU / RTL Engineer · SystemVerilog · digital logic · computer architecture</p>
+          <div>
+            <h5>Valve-driver firmware</h5>
             <ul>
-              <li>Designed the microarchitecture and SystemVerilog RTL for a 16-bit signed fixed-point ALU supporting ADD, SUB, EQ, NE, LT, and GE.</li>
-              <li>Implemented 1-cycle execution with 1 µop/cycle throughput and saturating arithmetic at signed 16-bit limits.</li>
-              <li>Integrated the ALU with the <code>fu_if</code> handshake interface and verified arithmetic, comparisons, overflow, and boundary cases through RTL simulation.</li>
+              <li>Moved HIT/HOLD behavior into per-driver configuration for two different PCB mappings.</li>
+              <li>Added next-frame SPI diagnostic decoding for undervoltage, transfer, load, operating-mode, and channel faults.</li>
             </ul>
-            <p><strong>ECE 327:</strong> paired SystemVerilog/FPGA labs included a fixed-point tanh accelerator using Q2.12 arithmetic, ready/valid backpressure and pipelining, plus matrix-vector accelerator work.</p>
           </div>
-          <figure class="asic-figure">
-            <img src="assets/tinytracer_alu_microarchitecture.png" alt="TinyTracer 16-bit fixed-point ALU microarchitecture diagram">
-            <figcaption>TinyTracer ALU microarchitecture — opcode decode, signed adder/subtractor, overflow/saturation logic, comparison logic, result mux, and output register.</figcaption>
+          <div>
+            <h5>Stall-detection finding</h5>
+            <p>
+              The existing PCB did not route the DRV8711 BEMF signal to an ADC-capable MCU input.
+              External BEMF-based detection therefore required a hardware change rather than additional firmware alone.
+            </p>
+          </div>
+        </div>
+
+        <div class="evidence-two">
+          <figure>
+            <img src="assets/qidni_motor_bench.jpg" loading="lazy" alt="Qidni motor-control diagnostics bench with oscilloscope">
+            <figcaption>Motor-control / diagnostics bench work.</figcaption>
           </figure>
-        </article>
-      </div>
-    </section>
-
-    <section class="project wrap" id="systems">
-      <header class="project-head">
-        <span class="project-no">05</span>
-        <div>
-          <h2>Production Software & C/C++ Systems</h2>
-          <p>DF/Net Research · multithreaded systems programming</p>
+          <figure>
+            <img src="assets/qidni_stall_scope.jpg" loading="lazy" alt="Oscilloscope measurement during DRV8711 stall investigation">
+            <figcaption>Oscilloscope measurement during the stall-detection investigation.</figcaption>
+          </figure>
         </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="copy-block">
-        <h3>DF/NET RESEARCH — C/C++ SOFTWARE DEVELOPER · FEB–AUG 2025</h3>
-        <p>DF/Net develops regulated eClinical software for clinical-trial data collection and management.</p>
-        <ul>
-          <li>Developed production C++/Qt functionality, including reusable eCRF/data import with merge/overwrite behavior.</li>
-          <li>Implemented structured parsing and field-level validation for high-integrity clinical inputs, including format/character constraints and edge-case handling.</li>
-          <li>Diagnosed runtime and parsing issues across Linux, Windows, and macOS and wrote regression/validation tests.</li>
-        </ul>
       </div>
-      <figure class="diagram wide"><img src="assets/dfnet_arch.png" alt="Generalized DF Net data workflow"><figcaption>Generalized structured-data workflow from input through parsing/validation to the Qt application.</figcaption></figure>
 
-      <div class="copy-block">
-        <h3>MULTITHREADED WEB CRAWLER & BINARY DATA VALIDATOR — C</h3>
-        <ul>
-          <li>Built a thread-safe frontier using pthreads, mutexes, and condition variables plus a visited-URL hash set to avoid duplicate work.</li>
-          <li>Used libcurl to fetch pages, libxml2/XPath to extract links, PNG signature validation for binary results, and synchronized logging/output across worker threads.</li>
-        </ul>
-      </div>
-      <figure class="diagram wide"><img src="assets/crawler_arch.png" alt="Concurrent web crawler work queue architecture"><figcaption>Concurrent work queue → pthread workers → HTTP/XML parsing → validation → synchronized output.</figcaption></figure>
-    </section>
+      <div class="subsection">
+        <h4>Embedded Linux Platform</h4>
+        <p class="subsection-meta">Yocto · i.MX8M Plus · U-Boot · device trees · systemd · networking · provisioning</p>
 
-    <section class="project wrap" id="embedded">
-      <header class="project-head">
-        <span class="project-no">06</span>
-        <div>
-          <h2>Embedded Control & Experimental Engineering</h2>
-          <p>Complete embedded systems · real-time data paths · controls / instrumentation</p>
+        <p>
+          A newly programmed i.MX8M Plus-based SoM needed a repeatable path from bootloader configuration
+          to working peripherals, network access, secure remote access, and automatic application startup.
+        </p>
+
+        <div class="diagram-wrap">
+          <p class="diagram-title">Embedded Linux bring-up and provisioning flow</p>
+          <div class="flow linux-top">
+            <div class="box compact"><strong>U-Boot</strong><span>environment + boot config</span></div>
+            <div class="arrow">→</div>
+            <div class="box compact"><strong>Device Tree</strong><span>base DT + overlays</span></div>
+            <div class="arrow">→</div>
+            <div class="box compact"><strong>Linux Kernel</strong><span>peripheral enablement</span></div>
+            <div class="arrow">→</div>
+            <div class="box compact"><strong>systemd</strong><span>backend / UI startup</span></div>
+            <div class="arrow">→</div>
+            <div class="box compact"><strong>Application</strong><span>target runtime</span></div>
+          </div>
+          <div class="flow linux-bottom">
+            <div class="box compact"><strong>Networking</strong><span>DHCP + IPv4 link-local fallback · Avahi/mDNS</span></div>
+            <div class="box compact"><strong>Remote Access</strong><span>SSH certificate authentication · RTC-to-system-time sync</span></div>
+            <div class="box compact"><strong>Windows Provisioning Tool</strong><span>Python utility · connectivity checks · file/config deployment · service setup</span></div>
+          </div>
+          <p class="caption">Generalized boot, deployment, networking, and provisioning flow.</p>
         </div>
-      </header>
-      <div class="rule"></div>
 
-      <div class="split-feature reservoir-row">
-        <figure><img src="assets/reservoir.jpg" alt="STM32 water reservoir prototype"><figcaption>STM32 reservoir prototype during bring-up.</figcaption></figure>
-        <div>
-          <div class="copy-block">
-            <h3>WATER RESERVOIR EMBEDDED CONTROL SYSTEM — C / STM32</h3>
+        <div class="three-col-copy">
+          <div>
+            <h5>Board bring-up</h5>
             <ul>
-              <li>Built a multi-mode controller integrating PWM motor control, servo actuation, ultrasonic sensing, interrupt-driven RPM measurement, UART configuration, timers, input capture, and empty-reservoir safety shutdown logic.</li>
-              <li>Performed system bring-up across firmware, timing, and electrical interfaces and produced a prototype schematic and PCB design.</li>
+              <li>Configured U-Boot settings, base device trees, custom overlays, target binaries, and configuration.</li>
+              <li>Created systemd services and validated automatic application startup.</li>
+              <li>Worked with UART, SPI, I²C, HDMI, and other board-level interfaces.</li>
             </ul>
           </div>
-          <figure class="diagram"><img src="assets/reservoir_arch.png" alt="STM32 reservoir control architecture"></figure>
-        </div>
-      </div>
-
-      <div class="two-col lower-projects">
-        <div>
-          <div class="copy-block">
-            <h3>AUDIO PLAYBACK & FILESYSTEM SYSTEM — C / FATFS</h3>
-            <p>Implemented SD-card/FAT directory traversal, WAV/file parsing, a UART command interface, real-time audio streaming, stereo/mono behavior, variable playback speeds, interrupt-driven controls, debouncing, and display/status feedback.</p>
+          <div>
+            <h5>Networking & remote access</h5>
+            <ul>
+              <li>Stabilized direct Ethernet using DHCP with IPv4 link-local fallback and mDNS.</li>
+              <li>Configured certificate-authority SSH authentication.</li>
+              <li>Fixed time-related certificate failures using RTC synchronization at boot.</li>
+            </ul>
           </div>
-          <figure class="diagram"><img src="assets/audio_arch.png" alt="Embedded audio playback and FATFS architecture"><figcaption>Generalized FATFS / parsing / audio-streaming flow.</figcaption></figure>
-        </div>
-        <div>
-          <div class="copy-block">
-            <h3>CONTROLS & PHYSICAL SYSTEMS — ECE 380</h3>
-            <p>Hands-on controls labs covered first/second-order system identification, DC motor speed/position control, proportional/PID behavior, root-locus reasoning, and lead/lag compensator design using laboratory instrumentation and oscilloscope measurements.</p>
+          <div>
+            <h5>Provisioning automation</h5>
+            <p>
+              Built a Python Windows utility to automate connectivity checks, hostname/configuration setup,
+              file deployment, device-tree overlays, scripts, services, and password/certificate SSH workflows.
+            </p>
           </div>
-          <figure><img src="assets/controls_lab.jpg" alt="ECE 380 control systems laboratory"><figcaption>ECE 380 control-system laboratory work.</figcaption></figure>
         </div>
       </div>
-    </section>
 
-    <section class="project wrap" id="experience">
-      <header class="project-head">
-        <span class="project-no">07</span>
+      <div class="subsection">
+        <h4>Sensor Validation & Physical Integration</h4>
+        <p class="subsection-meta">Firmware integration · controlled testing · root-cause reasoning · rapid prototyping</p>
+
+        <div class="three-col-copy">
+          <div>
+            <h5>Air-bubble detector integration</h5>
+            <ul>
+              <li>Ported existing sensor logic to ATSAMD51 platform GPIO APIs.</li>
+              <li>Integrated raw, bubble-detection, and self-test behavior into the firmware build.</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Controlled validation</h5>
+            <ul>
+              <li>Used controlled tubing, injected bubbles, multiple flow conditions, video timing, and structured workbooks.</li>
+              <li>Separated sensor response from physical bubble travel when interpreting detection timing.</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Additional integration</h5>
+            <ul>
+              <li>Developed formal net-fluid-removal verification procedures with acceptance checks.</li>
+              <li>Investigated fluid-channel leakage across sealing, fit, restriction, strength, and manufacturing tradeoffs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="evidence-three">
+          <figure>
+            <img src="assets/abd_setup.jpg" loading="lazy" alt="Controlled air-bubble detector validation setup">
+            <figcaption>Controlled air-bubble detector test setup.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/abd_timing.jpg" loading="lazy" alt="Video timing setup for air-bubble detector response analysis">
+            <figcaption>Video/timing setup used during response analysis.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/pressure_membrane.jpg" loading="lazy" alt="Custom pressure-sensor membrane">
+            <figcaption>Custom pressure-sensor membrane used during integration.</figcaption>
+          </figure>
+        </div>
+
+        <div style="margin-top:22px;max-width:760px">
+          <h5 style="margin:0 0 7px;font-size:13px">Pressure-sensor membrane integration</h5>
+          <p style="margin:0">
+            Designed and 3D-printed a simple alignment fixture using basic CAD to consistently position
+            the custom membrane against a pressure sensor during integration and testing.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <article class="company">
+      <div class="company-header">
         <div>
-          <h2>Education & Additional Experience</h2>
-          <p>Research · communication · technical breadth · independent responsibility</p>
+          <h3>DF/Net Research</h3>
+          <p class="company-meta">C/C++ Software Developer · Production C++ / Qt</p>
+          <p class="company-context">
+            DF/Net develops regulated eClinical software for clinical-trial data collection and management.
+          </p>
         </div>
-      </header>
-      <div class="rule"></div>
-
-      <div class="two-col experience-blocks">
-        <div class="copy-block">
-          <h3>WAT.AI — MACHINE LEARNING RESEARCHER</h3>
-          <p class="small-meta">May 2025–Dec 2025 · Waterloo, ON</p>
-          <p>Evaluated vision-language model choices and multimodal fusion strategies for a video-perception pipeline involving frame-level person detection, bounding boxes, and emotion-attribute extraction.</p>
-        </div>
-        <div class="copy-block">
-          <h3>PRIVATE MATHEMATICS & PHYSICS TUTOR — SELF-EMPLOYED</h3>
-          <p class="small-meta">Summer 2023–Present</p>
-          <ul>
-            <li>Delivered 800+ hours of individualized mathematics and physics instruction to 13 high school students.</li>
-            <li>Designed lesson plans, practice assessments, and progressively challenging problem sets; analyzed performance to identify misconceptions and refine teaching strategies.</li>
-            <li>Independently managed scheduling, student assessments, parent communication, and progress reporting.</li>
-          </ul>
-        </div>
+        <div class="company-date">Feb–Aug 2025 · Remote</div>
       </div>
 
-      <div class="additional-bg">
-        <div><strong>ECE 318</strong><span>Sampling, aliasing, quantization, PCM encoding/decoding, low-pass reconstruction, oscilloscope-based measurement</span></div>
-        <div><strong>ECE 222</strong><span>RISC-V assembly, memory-mapped GPIO, lookup logic, subroutines/stack behavior, C↔assembly interfacing</span></div>
+      <ul class="bullets">
+        <li>Developed production C++/Qt functionality, including reusable eCRF/data import with merge/overwrite behavior.</li>
+        <li>Implemented structured parsing and field-level validation for high-integrity clinical inputs, including format/character constraints and edge cases.</li>
+        <li>Diagnosed parsing and runtime issues across Linux, Windows, and macOS and wrote regression/validation tests.</li>
+      </ul>
+
+      <div class="diagram-wrap">
+        <p class="diagram-title">Generalized production data-flow</p>
+        <div class="flow dfnet">
+          <div class="box"><strong>Structured Input</strong><span>eCRF / clinical form data</span></div>
+          <div class="arrow">→</div>
+          <div class="box"><strong>C++ Parsing</strong><span>field extraction · edge cases</span></div>
+          <div class="arrow">→</div>
+          <div class="box"><strong>Validation</strong><span>format + character constraints</span></div>
+          <div class="arrow">→</div>
+          <div class="box"><strong>Import Workflow</strong><span>merge / overwrite behavior into Qt application</span></div>
+        </div>
+        <div class="dfnet-testing">
+          <strong>Cross-platform debugging & regression testing</strong>
+          <span>Linux &nbsp;|&nbsp; Windows &nbsp;|&nbsp; macOS</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section shell" id="teams">
+    <div class="section-head">
+      <p class="section-kicker">Technical Teams & Research</p>
+      <h2>Collaborative engineering outside internships</h2>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-copy">
+        <h3>UWASIC — TinyTracer Ray-Tracing ASIC</h3>
+        <p class="role">ALU / RTL Engineer · Sep 2026–Present</p>
+        <ul>
+          <li>Designed the microarchitecture and SystemVerilog RTL for a 16-bit signed fixed-point ALU supporting ADD, SUB, EQ, NE, LT, and GE.</li>
+          <li>Implemented 1-cycle execution at 1 µop/cycle with signed saturating arithmetic at <code>0x7FFF</code> / <code>0x8000</code>.</li>
+          <li>Integrated the ALU with the accelerator <code>fu_if</code> functional-unit handshake interface.</li>
+          <li>Documented datapath, control, and interface behavior and verified arithmetic, comparison, overflow, and boundary cases through RTL simulation.</li>
+        </ul>
+      </div>
+      <figure class="microarch">
+        <img src="assets/tinytracer_alu_microarchitecture.png" loading="lazy" alt="TinyTracer 16-bit fixed-point ALU microarchitecture">
+        <figcaption>TinyTracer ALU microarchitecture.</figcaption>
+      </figure>
+    </div>
+
+    <div class="watai">
+      <h3>WAT.ai — Machine Learning Researcher</h3>
+      <p class="company-meta">May–Dec 2025 · Waterloo, ON</p>
+      <p>
+        Evaluated vision-language model choices and multimodal fusion approaches for a video-perception
+        pipeline involving frame-level person detection, bounding-box localization, and emotion recognition.
+      </p>
+    </div>
+  </section>
+
+  <section class="section shell" id="projects">
+    <div class="section-head">
+      <p class="section-kicker">Selected Technical Projects</p>
+      <h2>Grouped by engineering domain</h2>
+    </div>
+
+    <section class="domain">
+      <div class="domain-title">
+        <h3>Real-Time Systems</h3>
+        <div class="domain-content">
+          <article class="project-block">
+            <div class="project-head">
+              <h4>ECE 350 — Real-Time Executive / RTOS Kernel</h4>
+              <span class="project-date">Jan–Apr 2026</span>
+            </div>
+            <p class="project-tech">C · ARM Cortex-M4 · STM32F401RE · ARM assembly · four-person course project</p>
+            <div class="project-copy">
+              <ul>
+                <li>Implemented a custom embedded kernel with dynamic task creation/termination, per-task stacks, cooperative and preemptive context switching, and SVC/PendSV-based kernel operations.</li>
+                <li>Built dynamic heap allocation/deallocation with block coalescing and SysTick-driven Earliest Deadline First scheduling with task deadlines, sleep, and preemption.</li>
+              </ul>
+            </div>
+            <div class="kernel-grid">
+              <div><strong>Application tasks</strong><span>task entry points / stacks</span></div>
+              <div><strong>SVC-protected kernel APIs</strong><span>TCBs / task state</span></div>
+              <div><strong>First-Fit heap allocator</strong><span>metadata / ownership / coalescing</span></div>
+              <div><strong>EDF scheduler</strong><span>ready / sleeping tasks</span></div>
+              <div><strong>PendSV + SysTick</strong><span>context switching / timing</span></div>
+              <div><strong>Target</strong><span>ARM Cortex-M4 / STM32F401RE</span></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="project wrap" id="education">
-      <header class="simple-head">
-        <h2>Education & Technical Toolkit</h2>
-      </header>
-      <div class="rule"></div>
-      <div class="two-col education-grid">
-        <div class="copy-block">
-          <h3>UNIVERSITY OF WATERLOO</h3>
-          <p><strong>BASc Computer Engineering</strong> · Expected 2028</p>
-          <p><strong>Current coursework:</strong> Computer Architecture, Compilers, Computer Networks.</p>
-          <p><strong>Selected completed coursework:</strong> Real-Time Operating Systems, Digital Hardware Systems, Embedded Microprocessor Systems, Systems Programming & Concurrency, Algorithms & Data Structures, Analog Control Systems, Communication Systems, Instrument & Prototyping Lab.</p>
-        </div>
-        <div class="toolkit">
-          <div><strong>Languages</strong><span>C, C++, Python, C#, SystemVerilog, ARM/RISC-V Assembly</span></div>
-          <div><strong>Embedded</strong><span>ATSAMD51, STM32, PWM, timers, input capture, interrupts, UART, SPI, I²C, FATFS, motor drivers</span></div>
-          <div><strong>Linux / systems</strong><span>Linux, Yocto, U-Boot, device trees/overlays, systemd, NetworkManager, mDNS, SSH, pthreads</span></div>
-          <div><strong>Hardware / debug</strong><span>FPGA/RTL, oscilloscope, sensor/actuator bring-up, schematic/PCB work, basic CAD and 3D printing</span></div>
+    <section class="domain">
+      <div class="domain-title">
+        <h3>RTL / Computer Architecture</h3>
+        <div class="domain-content">
+          <article class="project-block">
+            <div class="project-head">
+              <h4>5-Stage Pipelined RISC-V Processor</h4>
+              <span class="project-date">Sep 2026–Present</span>
+            </div>
+            <p class="project-tech">Verilog · Verilator · GTKWave · PYNQ-Z1</p>
+            <div class="project-copy">
+              <ul>
+                <li>Built a synthesizable 5-stage RISC-V processor with forwarding/bypassing and stalling for hazards.</li>
+                <li>Verified the processor using RISC-V benchmarks in Verilator/GTKWave and ran the completed design on a PYNQ-Z1 FPGA.</li>
+              </ul>
+            </div>
+            <div class="diagram-wrap">
+              <p class="diagram-title">Reconstructed 5-stage pipeline</p>
+              <div class="flow pipeline">
+                <div class="box compact"><strong>IF</strong><span>instruction fetch</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>ID</strong><span>decode / register read</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>EX</strong><span>ALU / branch</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>MEM</strong><span>memory access</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>WB</strong><span>write-back</span></div>
+              </div>
+              <p class="caption">Forwarding/bypassing and hazard stalls are used across the pipeline.</p>
+            </div>
+          </article>
+
+          <article class="project-block">
+            <div class="project-head"><h4>ECE 327 — Digital Hardware Systems</h4></div>
+            <p class="project-tech">SystemVerilog · FPGA · Vivado/Kria · paired laboratory work</p>
+            <div class="project-copy">
+              <p>
+                Selected labs included a fixed-point tanh accelerator using Q2.12 arithmetic,
+                ready/valid backpressure and pipelining, plus matrix-vector accelerator work with
+                parallel compute lanes and pipelined dot-product units. No specific achieved clock
+                rate is claimed without the corresponding timing report.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="wrap footer">
-    <span>HA-NEUL PARK</span>
-    <span><a href="mailto:h93park@uwaterloo.ca">h93park@uwaterloo.ca</a></span>
-  </footer>
+    <section class="domain">
+      <div class="domain-title">
+        <h3>Embedded Systems</h3>
+        <div class="domain-content">
+          <article class="project-block">
+            <div class="project-head">
+              <h4>Water Reservoir Embedded Control System</h4>
+              <span class="project-date">Nov–Dec 2025</span>
+            </div>
+            <p class="project-tech">C · STM32 · PWM · timers · input capture · interrupts · UART</p>
+            <div class="project-image-row">
+              <figure>
+                <img src="assets/reservoir.jpg" loading="lazy" alt="STM32 water reservoir embedded control prototype">
+                <figcaption>STM32 reservoir prototype during bring-up.</figcaption>
+              </figure>
+              <div class="project-copy">
+                <ul>
+                  <li>Built a multi-mode controller integrating PWM motor control, servo actuation, ultrasonic input capture, interrupt-driven RPM sensing, UART configuration, and empty-reservoir safety shutdown.</li>
+                  <li>Completed firmware/electrical bring-up and produced a prototype schematic and PCB design.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-block">
+            <div class="project-head"><h4>Audio Playback & Filesystem System</h4></div>
+            <p class="project-tech">C · FATFS · UART · interrupts · real-time audio streaming</p>
+            <div class="project-copy">
+              <p>
+                Implemented SD-card/FAT directory traversal, WAV/file parsing, a UART command interface,
+                real-time audio streaming, stereo/mono behavior, variable playback speeds, interrupt-driven controls,
+                debouncing, and display/status feedback.
+              </p>
+            </div>
+            <div class="diagram-wrap">
+              <div class="flow audio">
+                <div class="box compact"><strong>SD Card / FATFS</strong><span>directory traversal + file access</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>WAV Parsing</strong><span>header / file parsing</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>Real-Time Stream</strong><span>configurable playback</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>Hardware I/O</strong><span>audio + LCD + controls</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="domain">
+      <div class="domain-title">
+        <h3>Systems Programming</h3>
+        <div class="domain-content">
+          <article class="project-block">
+            <div class="project-head"><h4>Multithreaded Web Crawler & Binary Data Validator</h4></div>
+            <p class="project-tech">C · pthreads · mutexes · condition variables · libcurl · libxml2/XPath</p>
+            <div class="project-copy">
+              <ul>
+                <li>Built a thread-safe frontier using pthreads, mutexes, and condition variables plus a visited-URL hash set to avoid duplicate work.</li>
+                <li>Used libcurl to fetch pages, libxml2/XPath to extract links, PNG signature validation for binary results, and synchronized logging/output across worker threads.</li>
+              </ul>
+            </div>
+            <div class="diagram-wrap">
+              <div class="flow dfnet">
+                <div class="box compact"><strong>Frontier Queue</strong><span>mutex + condition variable</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>Worker Threads</strong><span>pthreads</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>Fetch / Parse</strong><span>libcurl · libxml2</span></div>
+                <div class="arrow">→</div>
+                <div class="box compact"><strong>Validate / Output</strong><span>PNG signatures · synchronized logging</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="section shell" id="coursework">
+    <div class="section-head">
+      <p class="section-kicker">Selected Coursework / Labs</p>
+      <h2>Supporting technical breadth</h2>
+    </div>
+    <div class="course-list">
+      <div class="course-row">
+        <strong>ECE 380 — Analog Control Systems</strong>
+        <span>First/second-order system identification, DC motor speed/position control, proportional/PID behavior, root-locus reasoning, lead/lag compensation, and oscilloscope-based measurements.</span>
+      </div>
+      <div class="course-row">
+        <strong>ECE 318 — Communication Systems</strong>
+        <span>Sampling, aliasing, quantization, PCM encoding/decoding, low-pass reconstruction, and oscilloscope-based measurement.</span>
+      </div>
+      <div class="course-row">
+        <strong>ECE 222 — Digital Computers</strong>
+        <span>RISC-V assembly, memory-mapped GPIO, lookup logic, subroutines/stack behavior, and C↔assembly interfacing.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-head">
+      <p class="section-kicker">Additional Experience</p>
+      <h2>Teaching & independent responsibility</h2>
+    </div>
+    <div class="tutor-grid">
+      <div class="tutor-stat">
+        <strong>800+</strong>
+        <span>hours of one-on-one mathematics & physics instruction</span>
+        <strong style="margin-top:24px">13</strong>
+        <span>high-school students taught</span>
+      </div>
+      <div class="tutor-copy">
+        <h3>Private Mathematics & Physics Tutor — Self-Employed</h3>
+        <p class="role">Summer 2023–Present</p>
+        <ul>
+          <li>Delivered individualized mathematics and physics instruction tailored to different academic goals and learning needs.</li>
+          <li>Designed lesson plans, practice assessments, and progressively challenging problem sets; analyzed student performance to diagnose misconceptions and refine teaching strategies.</li>
+          <li>Independently managed scheduling, student assessments, parent communication, and progress reporting.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="skills">
+    <div class="section-head">
+      <p class="section-kicker">Education & Skills</p>
+      <h2>Technical toolkit</h2>
+    </div>
+
+    <div class="education-line">
+      <strong>University of Waterloo — BASc Computer Engineering</strong>
+      <span>Expected 2028</span>
+    </div>
+    <p class="coursework">
+      Relevant coursework: Real-Time Operating Systems; Embedded Microprocessor Systems; Digital Hardware Systems;
+      Analog Control Systems; Computer Architecture; Compilers; Computer Networks.
+    </p>
+
+    <div class="skills">
+      <div class="skill-row">
+        <strong>Programming / HDL:</strong>
+        <span>C, C++, Python, C#, Bash, Assembly (ARM, RISC-V), SystemVerilog, Verilog</span>
+      </div>
+      <div class="skill-row">
+        <strong>Embedded / RTOS:</strong>
+        <span>ATSAMD51/SAMD51, STM32F401RE, interrupts, timers, PWM, input capture, UART, SPI, I²C, FATFS, motor drivers, SysTick/PendSV</span>
+      </div>
+      <div class="skill-row">
+        <strong>Embedded Linux:</strong>
+        <span>Yocto, U-Boot, device trees/overlays, systemd, NetworkManager, Avahi/mDNS, SSH</span>
+      </div>
+      <div class="skill-row">
+        <strong>Tools / Debug:</strong>
+        <span>Git, GDB, CMake, Make, PlatformIO, STM32CubeIDE, Verilator, GTKWave, oscilloscope, schematic and PCB design</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="shell">
+  <div class="confidential">
+    Company work is intentionally generalized. Proprietary code, internal repositories, unpublished product details,
+    and sensitive schematics are omitted.
+  </div>
+  <div>© Ha-Neul (Hanna) Park</div>
+</footer>
 </body>
 </html>
